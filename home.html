@@ -151,6 +151,7 @@ $(document).ready(function(){
     $('#SoupName').text(soup.text);
     $('#date').text(new Date().toISOString().slice(0, 10));
     $('#image').attr('src',soup.image);
+    $('#recipe').attr('href', 'https://www.google.com/search?q=' + soup.text);
 });
 </script>
 </head>
@@ -161,6 +162,7 @@ $(document).ready(function(){
     <h3 id="date">Date</h3>
     <h1 id="SoupName">Soup Name</h1>
     <img id="image" src="http://fzo.to/r/dan" alt="Cinqueterra" width="500">
+    <a  id="recipe"><h3>Recipe</h3></a>
     <div>
         This pointless work was done by <a href="https://gajmohan.dev">Gaj</a>
     </div>
