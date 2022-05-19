@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SoupCal</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet"> 
+<style>
+    body{
+            font-family: 'Raleway', sans-serif;
+    }
+</style>
+<script>
+
+    let soups = [
+  {
+    "text": "Beefy Sweet Potato Soup",
+    "image": "https://s23209.pcdn.co/wp-content/uploads/2019/02/Sweet-Potato-Beef-StewIMG_8534.jpg"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/05/English-Pub-Split-Pea-Soup_EXPS_EDSC18_184673_B03_20_1b-5.jpg?fit=696,696",
+    "text": "English Pub Split Pea Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2020/05/Chunky-Potato-Leek-Soup_EXPS_FT20_23901_F_0916_1-1.jpg?fit=696,696",
+    "text": "Chunky Potato Leek Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/07/French-Lentil-and-Carrot-Soup_EXPS_THSO18_219374_B04_19_8b-23.jpg?fit=700,700",
+    "text": "French Lentil and Carrot Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/07/The-Best-Ever-Tomato-Soup_EXPS_CFFBZ22_222724_B10_01_2b-10.jpg?fit=700,700",
+    "text": "The Best Ever Tomato Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/exps148332_SD163575D10_08_8b-5.jpg?fit=696,696",
+    "text": "Cold-Day Chicken Noodle Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Couscous-Meatball-Soup_EXPS_SSBZ18_138577_C03_13_4b-2.jpg?fit=696,696",
+    "text": "Couscous Meatball Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Vegetable-Lentil-Soup_EXPS_CWDJ18_32216_D08_18_2b-3.jpg?fit=696,696",
+    "text": "Vegetable Lentil Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Slow-Cooker-Sweet-Potato-Soup_EXPS_SDON17_204681_C06_29_2b-13.jpg?fit=700,700",
+    "text": "Slow-Cooker Sweet Potato Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2019/09/Vegan-Cabbage-Soup_EXPS_FT19_245341_F_0911_1-4.jpg?fit=700,700",
+    "text": "Vegan Cabbage Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Wild-Rice-Mushroom-Soup_EXPS_HCK17_64290_C08_26_3b.jpg?fit=700,700",
+    "text": "Wild Rice Mushroom Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Hearty-Vegetable-Soup_EXPS_HC17_15651_D01_20_6b-28.jpg?fit=700,700",
+    "text": "Hearty Vegetable Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Turkey-White-Chili_EXPS_THSO17_6282_C04_25_3b-8.jpg?fit=700,700",
+    "text": "Turkey White Chili"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/10/Chickpea-Tortilla-Soup_EXPS_OPFRB19_216413_B07_19_3bC-20.jpg?fit=700,700",
+    "text": "Chickpea Tortilla Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2020/08/Slow-Cooker-Sweet-Potato-Chocolate-Mole-Soup_EXPS_RC20_251153_07_14_E_1b.jpg?fit=700,700",
+    "text": "Slow-Cooker Sweet Potato Chocolate Mole Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Greens-and-Beans-Turkey-Soup_EXPS_TCBBZ18_36465_C05_04_3b-9.jpg?fit=700,700",
+    "text": "Greens and Beans Turkey Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2019/05/Slow-Cooked-Vegetable-Wild-Rice-Soup_EXPS_SDFM19_133461_B10_16_6b_basedon-1.jpg?fit=700,700",
+    "text": "Pressure-Cooker Vegetable Wild Rice Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/12/Slow-Cooked-Black-Bean-Soup_EXPS_SDFM19_189463_B10_16_3b.jpg?fit=700,700",
+    "text": "Slow-Cooked Black Bean Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Creamy-Cauliflower-Pakora-Soup_EXPS_THFM17_198103_C09_22_2b-12.jpg?fit=700,700",
+    "text": "Creamy Cauliflower Pakora Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Hazelnut-Asparagus-Soup_EXPS_THAM17_198291_C11_11_3b-1.jpg?fit=696,696",
+    "text": "Hazelnut Asparagus Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/12/Cabbage-Barley-Soup_EXPS_SDFM19_77918_B10_16_5b-29.jpg?fit=700,700",
+    "text": "Cabbage Barley Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Slow-Cooked-Mexican-Beef-Soup_EXPS_SDAS17_147766_B04_12_2b-9.jpg?fit=700,700",
+    "text": "Slow-Cooked Mexican Beef Soup"
+  },
+   {
+    "image": "https://ca.slack-edge.com/TC49XP0TZ-U029PC4K1C6-40881fcf7538-512",
+    "text": "Ben Soep"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2019/09/Vegan-Carrot-Soup_EXPS_FT19_245342_F_0911_1-2.jpg?fit=696,696",
+    "text": "Vegan Carrot Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/exps3791_TGCB163937D03_09_1b-1.jpg?fit=696,696",
+    "text": "Turkey Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Lentil-Bacon-and-Bean-Soup_EXPS_THD17_189306_B08_11_3b-2.jpg?fit=696,696",
+    "text": "Lentil, Bacon and Bean Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/07/Pumpkin-Coconut-Soup_EXPS_PCBBZ19_151101_E04_08_1b-19.jpg?fit=700,700",
+    "text": "Pumpkin-Coconut Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2020/01/Pressure-Cooker-Chicken-Tortilla-Soup-_EXPS_FT20_244131_F_0107_1-17.jpg?fit=700,700",
+    "text": "Pressure-Cooker Chicken Tortilla Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2020/04/Quick-and-Healthy-Turkey-Veggie-Soup_EXPS_TOHAS_245313_F04_13_2b_home.jpg?fit=700,700",
+    "text": "Quick and Healthy Turkey Veggie Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Lemony-Mushroom-Orzo-Soup-for-Two_EXPS_CF2BZ19_39674_C12_18_1b-8.jpg?fit=696,696",
+    "text": "Lemony Mushroom-Orzo Soup for Two"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Roast-Pork-Soup_EXPS_BFBZ19_11838_B01_18_3b-2.jpg?fit=700,700",
+    "text": "Roast Pork Soup"
+  },
+  {
+    "image": "https://www.tasteofhome.com/wp-content/uploads/2019/05/Greek-Style-Lentil-Soup_EXPS_SDFM19_220763_B10_16_4b_basedon.jpg?fit=700,700",
+    "text": "Pressure-Cooker Greek-Style Lentil Soup"
+  }
+];
+
+$(document).ready(function(){
+    var index = new Date().getDate() - 1;
+    console.log(soups[index])
+    let soup = soups[index];
+    $('#SoupName').text(soup.text);
+    $('#date').text(new Date().toISOString().slice(0, 10));
+    $('#image').attr('src',soup.image);
+});
+</script>
+</head>
+<body>
+<div style="margin: auto;  width: 50%;  padding: 10px; text-align: center;">
+    <h1>SoupCal</h1>
+    <h2>Recommending you the best soup for each day</h2>
+    <h3 id="date">Date</h3>
+    <h1 id="SoupName">Soup Name</h1>
+    <img id="image" src="http://fzo.to/r/dan" alt="Cinqueterra" width="500">
+    <div>
+        This pointless work was done by <a href="https://gajmohan.dev">Gaj</a>
+    </div>
+</div>
+</body>
+</html>
